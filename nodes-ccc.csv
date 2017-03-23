@@ -1,0 +1,34 @@
+codigo_disciplina,disciplina,tipo,semestre
+1109053,Cálculo Diferencial e Integral II,Obrigatória,2
+1108089,Fundamentos de Física Clássica,Obrigatória,2
+1411181,Laboratório de Programação II,Obrigatória,2
+1411168,Programação II,Obrigatória,2
+1411170,Teoria dos Grafos,Obrigatória,2
+1109049,Álgebra Linear I,Obrigatória,3
+1411172,Estrutura de Dados e Algoritmos,Obrigatória,3
+1108090,Fundamentos de Física Moderna,Obrigatória,3
+1411179,Lab. de Estrutura de Dados e Algoritmos,Obrigatória,3
+1114107,Probabilidade e Estatistica,Obrigatória,3
+1411171,Teoria da Computação,Obrigatória,3
+1411177,Engenharia de Software I,Obrigatória,4
+1411182,Lab. de Org. e Arquitetura de Computadores,Obrigatória,4
+1411173,Lógica Matemática,Obrigatória,4
+1114114,Métodos Estatisticos,Obrigatória,4
+1411175,Org. e Arquitetura de Computadores I,Obrigatória,4
+1411169,Paradigmas de Ling. de Programação,Obrigatória,4
+1411178,Sistemas de Informação I,Obrigatória,4
+1411187,Análise e Técnica de Algoritmos,Complementar,5
+1411193,Banco de Dados I,Complementar,5
+1411189,Compiladores,Complementar,5
+1411183,Laboratório de Engenharia de Software,Obrigatória,5
+1411190,Redes de Computadores,Complementar,5
+1411195,Sistemas de Informação II,Complementar,5
+1411194,Banco de Dados II,Complementar,6
+1411196,Inteligência Artificial I,Complementar,6
+1411191,Interconexão de Redes de Computadores,Complementar,6
+1411184,Lab. de Intercon. de Redes de Computadores,Obrigatória,6
+1411192,Sistemas Operacionais,Complementar,6
+1411197,Aval. de Desempenho de Sistemas Discretos,Complementar,7
+1411188,Métodos e Software Numéricos,Complementar,7
+1411185,Projeto em Computação I,Obrigatória,7
+1411186,Projeto em Computação II,Obrigatória,8
