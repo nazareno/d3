@@ -54,9 +54,6 @@
 
 		<div class="section">
 			<h3>Referências</h3>
-			<ul class="list-unstyled">
-				<li><a href="https://github.com/d3/d3-geo/blob/master/README.md#azimuthal-projections" target="_blank">Projeções azimutais <span class="icon-link-external"></span></a></li>
-			</ul>
 		</div>
 	</div>
 
@@ -75,21 +72,30 @@
 				.attr('viewBox', '0 0 '+width+' '+height)
 				.attr('width', '100%');
 
-				var color = d3.scaleOrdinal(d3.schemeCategory20);
+		var color = d3.scaleOrdinal(d3.schemeCategory20);
 
 		var simulation = d3.forceSimulation()
-		    .force("link", d3.forceLink())//.id(function(d) { return d.id; }))
+		    .force("link", d3.forceLink().id(function(d) { return d.id; }))
 		    .force("charge", d3.forceManyBody())
 		    .force("center", d3.forceCenter(width / 2, height / 2));
 
-		d3.queue()
-					.defer(d3.csv, "links_ccc.csv")
-					.defer(d3.csv, "nodes_ccc.csv")
-					.await(draw);
-
-
-		function draw(error, links, nodes) {
+		//d3.json("http://analytics.lsd.ufcg.edu.br/pre/ciencia_da_computacao_d_cg/disciplinas", function(error, apiresponse) {
+		//d3.json("http://analytics.lsd.ufcg.edu.br/pre/design_d_cg/disciplinas", function(error, apiresponse) {
+		d3.json("http://analytics.lsd.ufcg.edu.br/pre/engenharia_eletrica_cg/disciplinas", function(error, apiresponse) {
 		  if (error) throw error;
+
+			var links = [];
+			apiresponse.forEach(function(d){
+				d.pre_requisitos.forEach(function(p){
+					links.push({source: String(d.codigo_disciplina), target: String(p)});
+				});
+			})
+
+			var nodes = apiresponse.map(function(d){
+				return {id: String(d.codigo_disciplina),
+								codigo_departamento : d.codigo_departamento,
+								nome : d.disciplina};
+			});
 
 			console.dir(links);
 			console.dir(nodes);
@@ -106,13 +112,14 @@
 		    	.data(nodes)
 		    .enter().append("circle")
 		      .attr("r", 5)
+		      .attr("fill", function(d) { return color(d.codigo_departamento); })
 		      .call(d3.drag()
 		          .on("start", dragstarted)
 		          .on("drag", dragged)
 		          .on("end", dragended));
 
 		  node.append("title")
-		      .text(function(d) { return d.id; });
+		      .text(function(d) { return d.nome; });
 
 		  simulation
 		      .nodes(nodes)
@@ -132,7 +139,7 @@
 		        .attr("cx", function(d) { return d.x; })
 		        .attr("cy", function(d) { return d.y; });
 		  }
-		}
+		});
 
 		function dragstarted(d) {
 		  if (!d3.event.active) simulation.alphaTarget(0.3).restart();
